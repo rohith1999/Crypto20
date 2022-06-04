@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3AA9AF</color>
+    <color name="colorPrimaryDark">#FFFAFA</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFAFA</color>
+    <color name="red">#F44336</color>
+    <color name="green">#4CAF50</color>
+    <color name="darkGrey">#A1A1A1</color>
+    <color name="grey">#A9A9A9</color>
+    <color name="lightBlue">#00BCD4</color>
+    <color name="transparentBlue">#6A00BCD4</color>
+    <color name="input_background">#ECECEC</color>
+    <color name="icon_background">#20FFFFFF</color>
+    <color name="error">#B00020</color>
+    <color name="received_message_background">#090D16</color>
+</resources>

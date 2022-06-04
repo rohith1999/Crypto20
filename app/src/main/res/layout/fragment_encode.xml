@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/encode_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/encode_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/imageview_encode"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/ic_round_image_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/encode_app_bar_layout" />
+
+
+    <ImageButton
+        android:id="@+id/choose_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+
+        android:src="@drawable/ic_add_a_photo_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_encode"
+        app:layout_constraintEnd_toEndOf="@+id/imageview_encode"
+        app:layout_constraintStart_toEndOf="@+id/imageview_encode" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/secret_message_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Enter your secret message"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="9dp"
+        app:boxCornerRadiusBottomStart="9dp"
+        app:boxCornerRadiusTopEnd="9dp"
+        app:boxCornerRadiusTopStart="9dp"
+        app:counterEnabled="true"
+        app:counterTextColor="@color/lightBlue"
+        app:endIconDrawable="@drawable/ic_keyboard_voice_black_24dp"
+        app:endIconMode="custom"
+        app:endIconTint="@color/lightBlue"
+        app:hintTextAppearance="@style/Widget.Design.TextInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whether_encoded"
+        app:startIconDrawable="@drawable/ic_message_black_24dp"
+        app:startIconTint="@color/lightBlue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gabriela"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+    <TextView
+        android:id="@+id/whether_encoded"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/gabriela"
+        android:gravity="center|center_horizontal"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageview_encode"
+        app:layout_constraintStart_toStartOf="@+id/imageview_encode"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_encode" />
+
+
+    <com.google.android.material.chip.Chip
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="encoded images are saved in Pictures"
+        app:checkedIconTint="@color/white"
+        app:chipIcon="@drawable/ic_save_black_24dp"
+        app:chipIconSize="24dp"
+        app:iconStartPadding="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secret_message_layout" />
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/encode_adview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-1946071158696601/4849178751"
+        app:layout_constraintBottom_toTopOf="@+id/chipNavigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/chipNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        app:cnb_iconSize="30dp"
+        app:cnb_menuResource="@menu/encode_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

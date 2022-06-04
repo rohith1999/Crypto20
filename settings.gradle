@@ -1,0 +1,2 @@
+rootProject.name='Crypto20'
+include ':app'

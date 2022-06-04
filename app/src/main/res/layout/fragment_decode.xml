@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/success_lottie"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:elevation="2dp"
+        android:scaleType="fitCenter"
+        android:background="#51FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_decode"
+        app:layout_constraintEnd_toEndOf="@+id/imageview_decode"
+        app:layout_constraintStart_toStartOf="@+id/imageview_decode"
+        app:layout_constraintTop_toTopOf="@+id/imageview_decode"
+        app:lottie_autoPlay="true"
+        android:visibility="invisible"
+        app:lottie_loop="true" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/decode_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/decode_toolbar"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/imageview_decode"
+        android:layout_width="208dp"
+        android:layout_height="185dp"
+        android:layout_marginTop="8dp"
+        android:clickable="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_round_image_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/key_password_layout" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/decode_adview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-1946071158696601/6870753157"
+        app:layout_constraintBottom_toTopOf="@+id/decode_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+    <ImageButton
+        android:id="@+id/choose_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_add_a_photo_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_decode"
+        app:layout_constraintEnd_toEndOf="@+id/imageview_decode"
+        app:layout_constraintStart_toEndOf="@+id/imageview_decode" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/key_password_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="Secret key"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="9dp"
+        app:boxCornerRadiusBottomStart="9dp"
+        app:boxCornerRadiusTopEnd="9dp"
+        app:boxCornerRadiusTopStart="9dp"
+        app:counterEnabled="true"
+        app:counterTextColor="@color/colorPrimary"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/colorPrimary"
+        app:hintTextAppearance="@style/Widget.Design.TextInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/decode_app_bar_layout"
+        app:startIconDrawable="@drawable/ic_vpn_key_black_24dp"
+        app:startIconTint="@color/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/secret_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gabriela"
+            android:inputType="textPassword"
+            android:textSize="20sp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/decode_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/success_lottie">
+
+        <TextView
+            android:id="@+id/message_decode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/gabriela"
+            android:gravity="center_horizontal"
+            android:textSize="14sp" />
+
+
+    </ScrollView>
+
+
+
+
+    <ImageButton
+        android:id="@+id/decode_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_lock_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
