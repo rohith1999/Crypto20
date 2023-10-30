@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_choiceFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_choiceFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/encodeFragment"

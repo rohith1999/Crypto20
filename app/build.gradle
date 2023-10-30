@@ -6,13 +6,13 @@ apply plugin: "androidx.navigation.safeargs"
 
 android {
 
-    compileSdkVersion 30
+    compileSdkVersion 33
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.rohith.crypto20"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 4
         versionName "1.4"
         multiDexEnabled true
@@ -100,6 +100,14 @@ dependencies {
 
     //advertise
     implementation 'com.google.android.gms:play-services-ads:20.2.0'
+    constraints {
+        implementation('androidx.work:work-runtime:2.7.0') {
+            because '''androidx.work:work-runtime:2.1.0 pulled from
+      play-services-ads has a bug using PendingIntent without
+      FLAG_IMMUTABLE or FLAG_MUTABLE and will fail in Apps
+      targeting S+.'''
+        }
+    }
 
     //scalable unit
     implementation 'com.intuit.sdp:sdp-android:1.0.6'

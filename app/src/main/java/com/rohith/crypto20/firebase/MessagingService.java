@@ -23,6 +23,8 @@ import java.util.Random;
 
 public class MessagingService extends FirebaseMessagingService {
 
+    private PendingIntent pendingIntent;
+
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
@@ -43,7 +45,10 @@ public class MessagingService extends FirebaseMessagingService {
         Intent intent = new Intent(this, BaseActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Constants.KEY_USER, user);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
+
+
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId);
         builder.setSmallIcon(R.drawable.ic_round_notifications_24);

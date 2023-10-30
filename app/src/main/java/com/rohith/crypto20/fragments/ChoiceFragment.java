@@ -4,6 +4,7 @@ package com.rohith.crypto20.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rohith.crypto20.R;
 import com.rohith.crypto20.SettingsBottomSheetFragment;
+import com.rohith.crypto20.models.User;
+import com.rohith.crypto20.permenant.Constants;
 
 import co.mobiwise.materialintro.animation.MaterialIntroListener;
 import co.mobiwise.materialintro.prefs.PreferencesManager;
@@ -86,6 +89,16 @@ public class ChoiceFragment extends Fragment implements LifecycleObserver {
 
         Intent intent = requireActivity().getIntent();
 
+//        if(intent.hasExtra(Constants.KEY_USER)) {
+//            User user = (User) intent.getExtras().get(Constants.KEY_USER);
+//            Log.d("iiiiiiiiiii",user.name);
+//            ChoiceFragmentDirections.ActionChoiceFragmentToChatFragment action = ChoiceFragmentDirections.actionChoiceFragmentToChatFragment(
+//                    user
+//            );
+//            navController.navigate(action);
+//
+//        }
+
 
         // Figure out what to do based on the intent type
         if (intent != null) {
@@ -125,10 +138,6 @@ public class ChoiceFragment extends Fragment implements LifecycleObserver {
                 decode.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-//                        ChoiceFragmentDirections.ActionChoiceFragmentToEncodeFragment actionDecode = ChoiceFragmentDirections.actionChoiceFragmentToEncodeFragment(
-//                                ""
-//                        );
-//                        navController.navigate(actionDecode);
                         navController.navigate(R.id.action_choiceFragment_to_decodeFragment);
                     }
                 });
@@ -177,9 +186,6 @@ public class ChoiceFragment extends Fragment implements LifecycleObserver {
 
                 }
             }).show();
-
-            //  materialIntroView.setInfoText("Decode button helps you to reveal your text inside your specified image").show();
-
 
         });
 

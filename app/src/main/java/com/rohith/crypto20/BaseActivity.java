@@ -1,7 +1,10 @@
 package com.rohith.crypto20;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -11,15 +14,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.rohith.crypto20.fragments.UsersFragmentDirections;
+import com.rohith.crypto20.models.User;
 import com.rohith.crypto20.permenant.Constants;
 import com.rohith.crypto20.permenant.PreferenceManager;
 
@@ -48,7 +57,6 @@ public class BaseActivity extends AppCompatActivity implements LifecycleObserver
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-
         //auth data
 
         preferenceManager = new PreferenceManager(this);
@@ -62,6 +70,25 @@ public class BaseActivity extends AppCompatActivity implements LifecycleObserver
 
         if (!preferenceManager.check(Constants.USER_FINGERPRINT)) {
             preferenceManager.putBoolean(Constants.USER_FINGERPRINT, true);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    getApplicationContext(), Manifest.permission.POST_NOTIFICATIONS) ==
+                    PackageManager.PERMISSION_GRANTED) {
+
+
+//        else if (shouldShowRequestPermissionRationale(...)) {
+//            // In an educational UI, explain to the user why your app requires this
+//            // permission for a specific feature to behave as expected, and what
+//            // features are disabled if it's declined. In this UI, include a
+//            // "cancel" or "no thanks" button that lets the user continue
+//            // using your app without granting the permission.
+            } else {
+                // You can directly ask for the permission.
+                // The registered ActivityResultCallback gets the result of this request.
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 22);
+
+            }
         }
 
 
@@ -143,7 +170,6 @@ public class BaseActivity extends AppCompatActivity implements LifecycleObserver
     protected void onPause() {
         super.onPause();
         if (documentReference!=null){
-            Log.d("ooooooooooooooooooooooo","entered");
             documentReference.update(Constants.KEY_AVAILABILITY, 0);
 
         }
