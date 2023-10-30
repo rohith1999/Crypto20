@@ -91,7 +91,6 @@ public class ChoiceFragment extends Fragment implements LifecycleObserver {
 
 //        if(intent.hasExtra(Constants.KEY_USER)) {
 //            User user = (User) intent.getExtras().get(Constants.KEY_USER);
-//            Log.d("iiiiiiiiiii",user.name);
 //            ChoiceFragmentDirections.ActionChoiceFragmentToChatFragment action = ChoiceFragmentDirections.actionChoiceFragmentToChatFragment(
 //                    user
 //            );

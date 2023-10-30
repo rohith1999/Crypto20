@@ -18,7 +18,6 @@ import com.rohith.crypto20.R;
 import com.rohith.crypto20.models.User;
 import com.rohith.crypto20.permenant.Constants;
 
-import java.nio.channels.Channel;
 import java.util.Random;
 
 public class MessagingService extends FirebaseMessagingService {
@@ -28,7 +27,6 @@ public class MessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
-        Log.d("FCM", "Token: " + token);
     }
 
     @Override

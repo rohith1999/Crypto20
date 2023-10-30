@@ -169,7 +169,6 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
                 // Code to be executed when an ad request fails.
-                Log.d(TAG,adError.toString());
             }
 
             @Override
@@ -321,7 +320,6 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
                         imageName = returnCursor.getString(nameIndex);
 
                         path = FileUtils.getPath(requireActivity(), filepath);
-                        Log.d("999999999999", path);
                         //filepath
 
                         try {
@@ -332,7 +330,6 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
 
 
                         } catch (IOException e) {
-                            Log.d(TAG, "Error : " + e);
                         }
                     }
 
@@ -381,9 +378,6 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
                 if (!result.isSecretKeyWrong()) {
 
                     SECRET_MESSAGE = result.getMessage();
-
-
-                    Log.d("kkkkkkk", "entered");
                     biometricPrompt = new BiometricPrompt(this, executor, callback);
                     checkAndAuthenticate();
 
@@ -469,7 +463,6 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
 
                 @Override
                 public void onAuthenticationFailed() {
-                    Log.d("AAAAAAAAA", "failed");
                 }
             };
 

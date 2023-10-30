@@ -148,14 +148,12 @@ public class BaseActivity extends AppCompatActivity implements LifecycleObserver
 
                 @Override
                 public void onAuthenticationFailed() {
-                    Log.d("AAAAAAAAA", "failed");
                 }
             };
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onAppForegrounded() {
-        Log.d("SampleLifeCycle", "ON_RESUME");
 
         if (preferenceManager.getBoolean(Constants.USER_FINGERPRINT)) {
             biometricPrompt = new BiometricPrompt(this, executor, callback);

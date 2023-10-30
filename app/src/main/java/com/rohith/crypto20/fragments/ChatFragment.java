@@ -341,15 +341,13 @@ public class ChatFragment extends Fragment {
                             if (responseJSON.getInt("failure") == 1){
                                 JSONObject error = (JSONObject) results.get(0);
                                 showToast(error.getString("error")+"error");
-                                Log.d("aaaaaaaaaaaaaaaaaaa",results.toString());
                                 return;
                             }
                         }
 
                     }catch (JSONException e){
-                        Log.d("ssssssssssss",e.getMessage());
+
                     }
-                    Log.d("ssssssssssss","n sent");
 
                 }else {
                     showToast("Error"+response.code() );

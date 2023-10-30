@@ -99,7 +99,6 @@ public class AboutFragment extends Fragment {
                 if(requireActivity()!=null){
                     Task<Void> flow = manager.launchReviewFlow(requireActivity(), reviewInfo);
                     flow.addOnCompleteListener(task1 -> {
-                        Log.d("rrrrrrrrrrr",task1.toString());
 
                     });
                 }
@@ -109,7 +108,6 @@ public class AboutFragment extends Fragment {
                 // There was some problem, log or handle the error code.
 
                 String reviewErrorCode =  task.getException().getMessage();
-                Log.d("rrrrrrrrrrr",reviewErrorCode);
             }
         });
 

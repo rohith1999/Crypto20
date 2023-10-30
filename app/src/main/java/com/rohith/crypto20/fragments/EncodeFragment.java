@@ -180,7 +180,6 @@ public class EncodeFragment extends Fragment implements TextEncodingCallback {
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
                 // Code to be executed when an ad request fails.
-                Log.d(TAG, adError.toString());
             }
 
             @Override
@@ -391,7 +390,6 @@ public class EncodeFragment extends Fragment implements TextEncodingCallback {
 
 
                         filepath = result.getData().getData();
-                        Log.d("000000000oo", filepath.toString());
                         try {
                             original_image = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), filepath);
                             Glide.with(requireActivity()).load(original_image).centerCrop().into(imageView);
@@ -404,7 +402,6 @@ public class EncodeFragment extends Fragment implements TextEncodingCallback {
                             secret_message_layout.setEndIconTintList(ColorStateList.valueOf(Color.BLUE));
 //
                         } catch (IOException e) {
-                            Log.d(TAG, "Error : " + e);
                         }
 
                     }
