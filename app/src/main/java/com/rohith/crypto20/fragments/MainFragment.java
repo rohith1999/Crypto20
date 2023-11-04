@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -81,6 +82,14 @@ public class MainFragment extends Fragment implements ConversionListener {
         getToken();
         setListeners();
         listenConversations();
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                navController.navigate(R.id.action_mainFragment_to_choiceFragment);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
 
         return binding.getRoot();
     }
@@ -235,5 +244,6 @@ public class MainFragment extends Fragment implements ConversionListener {
         );
         navController.navigate((NavDirections) action);
     }
+
 }
 

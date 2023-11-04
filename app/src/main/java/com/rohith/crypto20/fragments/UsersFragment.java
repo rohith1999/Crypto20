@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.rohith.crypto20.R;
 import com.rohith.crypto20.adapters.UserAdapter;
 import com.rohith.crypto20.databinding.FragmentUsersBinding;
 import com.rohith.crypto20.listeners.UserListener;
@@ -63,7 +65,19 @@ public class UsersFragment extends Fragment implements UserListener {
         auth = FirebaseAuth.getInstance();
         setListeners();
         getUsers();
-
+        binding.imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_usersFragment_to_mainFragment);
+            }
+        });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                navController.navigate(R.id.action_usersFragment_to_mainFragment);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
         return binding.getRoot();
     }
 

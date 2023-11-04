@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.rohith.crypto20.R;
 import com.rohith.crypto20.adapters.ChatAdapter;
 import com.rohith.crypto20.databinding.FragmentChat2Binding;
 import com.rohith.crypto20.models.ChatMessage;
@@ -95,6 +97,13 @@ public class ChatFragment extends Fragment {
         loadReceiverDetails();
         init();
         listenMessages();
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                navController.navigate(R.id.action_chatFragment_to_mainFragment);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
 
         return binding.getRoot();
     }
@@ -103,13 +112,17 @@ public class ChatFragment extends Fragment {
         binding.imageBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requireActivity().onBackPressed();
+                navController.navigate(R.id.action_chatFragment_to_mainFragment);
             }
         });
         binding.layoutSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendMessage();
+                if(!binding.inputMessage.getText().toString().isEmpty()){
+                    sendMessage();
+                }else{
+                    showToast("Message field is empty");
+                }
             }
         });
     }

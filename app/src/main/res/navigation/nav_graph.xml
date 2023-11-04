@@ -94,6 +94,9 @@
         <action
             android:id="@+id/action_usersFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_usersFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
     <fragment
@@ -123,6 +126,9 @@
         <argument
             android:name="user"
             app:argType="com.rohith.crypto20.models.User" />
+        <action
+            android:id="@+id/action_chatFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
 
