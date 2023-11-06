@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -62,7 +63,13 @@ public class LoginFragment extends Fragment {
         preferenceManager = new PreferenceManager(requireActivity());
         auth = FirebaseAuth.getInstance();
         setListeners();
-        //  addDataToFirestore();
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                navController.navigate(R.id.action_loginFragment_to_choiceFragment);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
         return binding.getRoot();
     }
 

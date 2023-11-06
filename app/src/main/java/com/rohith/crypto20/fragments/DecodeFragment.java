@@ -23,16 +23,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.ayush.imagesteganographylibrary.Text.AsyncTaskCallback.TextDecodingCallback;
@@ -105,6 +110,7 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
     private Snackbar feedback;
     private MaterialIntroView.Builder materialIntroView;
     private PreferencesManager pref;
+    private NavController navController;
 
     private AdView decode_adview;
 
@@ -113,6 +119,11 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
         // Required empty public constructor
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController= Navigation.findNavController(view);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -148,6 +159,14 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
 
         //Choose Image Button
         choose_image_button.setOnClickListener(view -> ImageChooser());
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                navController.navigate(R.id.action_decodeFragment_to_choiceFragment);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
 
 
         //advertise
@@ -290,7 +309,7 @@ public class DecodeFragment extends Fragment implements TextDecodingCallback {
 
         }
         if (item.getItemId()==android.R.id.home){
-            requireActivity().onBackPressed();
+            navController.navigate(R.id.action_decodeFragment_to_choiceFragment);
         }
         return super.onOptionsItemSelected(item);
     }

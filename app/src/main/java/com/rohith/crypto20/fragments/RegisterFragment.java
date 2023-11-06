@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.rohith.crypto20.R;
 import com.rohith.crypto20.databinding.FragmentRegisterBinding;
 import com.rohith.crypto20.permenant.Constants;
 import com.rohith.crypto20.permenant.PreferenceManager;
@@ -71,6 +73,13 @@ public class RegisterFragment extends Fragment {
         preferenceManager = new PreferenceManager(requireActivity());
         auth = FirebaseAuth.getInstance();
         setListeners();
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                navController.navigate(R.id.action_registerFragment_to_loginFragment);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
         return binding.getRoot();
     }
 
@@ -78,7 +87,7 @@ public class RegisterFragment extends Fragment {
         binding.textSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requireActivity().onBackPressed();
+                navController.navigate(R.id.action_registerFragment_to_loginFragment);
             }
         });
         binding.buttonRegister.setOnClickListener(new View.OnClickListener() {

@@ -37,6 +37,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -154,6 +156,13 @@ public class EncodeFragment extends Fragment implements TextEncodingCallback {
         preferenceManager = new PreferenceManager(requireActivity());
 
 
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                navController.navigate(R.id.action_encodeFragment_to_choiceFragment);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
 
 
         //mobile ads
@@ -566,7 +575,7 @@ public class EncodeFragment extends Fragment implements TextEncodingCallback {
 
 
         if (item.getItemId() == android.R.id.home) {
-            requireActivity().onBackPressed();
+            navController.navigate(R.id.action_encodeFragment_to_choiceFragment);
         }
 
 
